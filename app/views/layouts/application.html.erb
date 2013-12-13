@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coldstreamers</title>
+	<%= stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application", :media => "all" %>
+	<%= javascript_include_tag :defaults, "rails.validations" %>
+	<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="banner">
+		<%= link_to root_path do%>
+			<%= image_tag("img04.jpg", :size=> "960x147")%>
+		<%end%>
+	</div>
+	
+	<div id="menu">
+		<ul>
+			<% if !signed_in? %>
+				<li><%= link_to "Sign In", signin_path %></li>
+			<% else %>
+				<li> Hello <%= @current_customer.first_name%></li>
+				<li><%= link_to "Sign Out", signout_path %></li>
+			<% end %>
+			<li><%= link_to "About", about_path%></li>
+			<li><%= link_to "Journal", journals_path %></li>
+			<li><%=mail_to "c11478972@mydit.ie", "Contact Us"%></li>
+			<li><%=link_to "Register", new_customer_path %></li>
+			<li><%=link_to "Races", races_path %></li>
+			<% customer = @current_customer %> <!--This is to allow a logged user to view their vehicle details-->
+			<li><%=link_to "Vehicles", customer %></li><!--This links to the show view of the customer page, which has a loop displaying all of thier cars-->
+			<li>
+				<div id="search">
+					<%= render :partial => 'races/search'%>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--Start Page-->
+	<div id="page">
+		<div id="content">
+		<!--Start Content-->
+			<%= yield %>
+		</div>
+	<!--start sidebar-->
+		<div id="sidebar">
+			<ul>
+				<li>
+				<h2>Useful Links</h2>
+				<ul>
+					<%if signed_in?%>
+						<li><%=link_to "Local Garages", customer.location %></li>
+					<%else%>
+						<li><%=link_to "Local Garages", signin_path %></li>
+					<%end%>
+					<li><%=link_to "All Garages", service_stations_path %></li>
+					<li><%=link_to "Road Side Assistance", 'http://www.theaa.ie/'%></li>
+					<li><%=link_to "Selling Your Car", 'http://www.webuyanycar.com/'%></li>
+					<li><%=link_to "Insurance", 'https://www.chill.ie/'%></li>
+				</ul>
+				</li>
+			</ul>
+		</div>
+		<!--end sidebar-->
+	</div>
+	<!--end page-->
+<div id="footer">
+	<p class="legal">Copyright (c) 2007 Website Name. All rights reserved.</p>
+	<p class="credit">Web Application by Stephen O'Kennedy/C11478972 <br/>Designed by <a href="http://www.nodethirtythree.com/">NodeThirtyThree</a> + <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a></p>
+	<p> Was not a cut and paste job!!</p>
+</div>
+</body>
+</html>
