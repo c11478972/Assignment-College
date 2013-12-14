@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
-  skip_filter :authorise, :only => [:new, :create]
+  skip_filter :authorise, :only => [:new, :create, :index]#index was exempt form the filter for testing and seed purposes
   def index
     @customers = Customer.all
 
