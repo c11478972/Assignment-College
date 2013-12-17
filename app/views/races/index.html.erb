@@ -18,7 +18,7 @@
     <td><%= race.dor %></td>
     <td><%= race.vehicletype %></td>
     <td><%= race.racetype %></td>
-    <td><%= race.location %></td>
+    <td><%= race.location.postal_code %></td>
     <td><%= link_to 'Details', race %></td>
     <td><%= link_to 'Edit', edit_race_path(race) %></td>
     <td><%= link_to 'Remove', race, confirm: 'Are you sure?', method: :delete %></td>

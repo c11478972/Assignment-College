@@ -27,4 +27,12 @@ class Customer < ActiveRecord::Base
 			self[column] = SecureRandom.urlsafe_base64
 		end while Customer.exists?(column => self[column])
 	end
+	#def self.setEditor(customer) #class method Note that the self is the same as the  
+	#	unless customer.nil?
+	#		if customer.posts.count >= 3
+	#			customer.editor = true 
+	#			customer.save		#Would not be saved automatically 
+	#		end
+	#	end
+	#end
 end

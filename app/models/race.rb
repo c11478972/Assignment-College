@@ -1,9 +1,12 @@
 class Race < ActiveRecord::Base
+	require 'date'
 	belongs_to :service_station
+	belongs_to :location
 	validates :racename, :dor, :vehicletype, :racetype, :location, :driverentryfee, :spectatorfee, presence: true
 	validates :racename, uniqueness: true
 	geocoded_by :fulladdress
 	after_validation :geocode, :if => :address_changed?
+	mount_uploader :circutmap, CircutmapUploader
 	
 	def self.search(search)
 		search_condition = search + "%"
@@ -17,6 +20,10 @@ class Race < ActiveRecord::Base
 	end 
 	
 	def fulladdress
-		fulladdress = self.address + " " + self.location #How to get the location name
+		fulladdress = self.address + " " + self.location.postal_code #How to get the location name
+	end
+	
+	def lastsignupday
+		lastsignupday  = dor - 7
 	end
 end

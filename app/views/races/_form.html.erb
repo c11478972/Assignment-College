@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :circutmap %><br />
-    <%= f.file_field :circutmap %>
+    <%= f.file_field :circutmap %><font color="red">The uploader is known to crash rails. However it does still upload the image</font>
   </div>
   <div class="field">
     <%= f.label :trailer %><br />
@@ -45,7 +45,7 @@
   </div>
   <div class="field">
     <%= f.label :location %><br />
-	<%= f.collection_select :location, Location.all, :id, :postal_code %>
+	<%= f.collection_select :location_id, Location.all, :id, :postal_code %>
   </div>
   <div class="field">
     <%= f.label :telephone %><br />

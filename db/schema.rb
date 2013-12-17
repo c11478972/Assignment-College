@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131214231626) do
+ActiveRecord::Schema.define(:version => 20131217095314) do
 
   create_table "customers", :force => true do |t|
     t.string   "first_name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20131214231626) do
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.boolean  "editor"
   end
 
   create_table "journals", :force => true do |t|
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20131214231626) do
     t.string   "vehicletype"
     t.string   "racetype"
     t.integer  "sponsor"
-    t.string   "location"
+    t.string   "location_id"
     t.string   "telephone"
     t.string   "website"
     t.float    "driverentryfee"

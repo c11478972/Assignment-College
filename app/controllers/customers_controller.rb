@@ -15,6 +15,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
     @customer = Customer.find(params[:id])
+	@service_stations = ServiceStation.near(@customer.address,10,:order=>:distance,:units=>:km)
 
     respond_to do |format|
       format.html # show.html.erb

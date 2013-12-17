@@ -3,11 +3,29 @@
 <p>
   <b>Racename:</b>
   <%= @race.racename %>
+  <div id="sidebar">
+			<ul>
+				<li>
+				<h2>Race Information</h2>
+				<ul>
+					<li><b>Date of the Race:</b> <%= @race.dor %></li>
+					<li><b>Last sign up day:</b> <%= @race.lastsignupday %></li>
+					<li><b>Full Address:</b> <%= @race.fulladdress %></li>
+					<li><b>Telephone:</b> <%= @race.telephone %></li>
+					<li><b>Website:</b> <%= link_to @race.website do%>
+						<%= @race.website %>
+						<%end%>
+					</li>
+				</ul>
+				</li>
+			</ul>
+	</div>
+
 </p>
 
 <p>
 	  <b>Circuit Map:</b>
-	  <%= image_tag(@race.circutmap, :size =>'50x50')%>
+	  <%= image_tag(@race.circutmap, :size =>'100x100')%>
 </p>
 
 <p>
@@ -16,8 +34,13 @@
 </p>
 
 <p>
-  <b>Dor:</b>
+  <b>Date of the Race:</b>
   <%= @race.dor %>
+</p>
+
+<p>
+  <b>Last sign up day:</b>
+  <%= @race.lastsignupday %>
 </p>
 
 <p>
@@ -52,7 +75,9 @@
 
 <p>
   <b>Website:</b>
-  <%= @race.website %>
+	<%= link_to @race.website do%>
+		<%= @race.website %>
+	<%end%>
 </p>
 
 <p>
@@ -64,7 +89,6 @@
   <b>Spectatorfee:</b>
   <%= @race.spectatorfee %>
 </p>
-
 
 <%= link_to 'Edit', edit_race_path(@race) %> |
 <%= link_to 'Back', races_path %>
