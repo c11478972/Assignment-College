@@ -10,7 +10,7 @@
 	open("http://www.michele.me/blog/wp-content/uploads/2007/08/irl32counties.txt")do |locations|
 			locations.read.each_line do |location|
 			postal_code = location
-			Location.create(:postal_code => potal_code)
+			Location.create(:postal_code => postal_code)
 		end
 	end
 	#locations = Location.create([{postal_code: 'Dublin'},{postal_code: 'Cork'},{postal_code: 'London Derry'},{postal_code: 'Armagh'},{postal_code: 'Wexford'}])

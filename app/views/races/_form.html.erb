@@ -36,10 +36,6 @@
 	<%= f.select :racetype,["Rally","24 HR. Endurance", "D-Class","C-Class","B-Class","A-Class","Classics"] %>
   </div>
   <div class="field">
-    <%= f.label :sponsor %><br />
-    <%= f.collection_select :sponsor, ServiceStation.all, :id, :name %>
-  </div>
-  <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>

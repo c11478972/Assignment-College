@@ -1,7 +1,7 @@
 class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.json
-    skip_filter :authorise
+    skip_filter :authorise, :only => [:index, :show]
   def index
     @journals = Journal.all
 

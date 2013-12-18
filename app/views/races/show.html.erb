@@ -1,94 +1,53 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Racename:</b>
-  <%= @race.racename %>
-  <div id="sidebar">
+<div id="sidebar">
 			<ul>
 				<li>
 				<h2>Race Information</h2>
 				<ul>
-					<li><b>Date of the Race:</b> <%= @race.dor %></li>
-					<li><b>Last sign up day:</b> <%= @race.lastsignupday %></li>
-					<li><b>Full Address:</b> <%= @race.fulladdress %></li>
+					<li><b>Date of the race:</b> <%= @race.dor %></li>
+					<li><b>Number of days left to register:</b> <%= @race.numofdaystoreg %></li>
+					<%if @race.numofdaystoreg < 0 %>
+						<li><font color="red">The last day for registering has passed</font></li>
+					<%elsif%>
+						<li><b>Last sign up day:</b> <font color="red">Today</font></li>		
+					<%else%>
+						<li><b>Last sign up day:</b> <%= @race.lastsignupday %></li>
+					<%end%>
+					<li><b>Full address:</b> <%= @race.fulladdress %></li>
 					<li><b>Telephone:</b> <%= @race.telephone %></li>
 					<li><b>Website:</b> <%= link_to @race.website do%>
 						<%= @race.website %>
 						<%end%>
 					</li>
+					<li><b>Race type:</b> <%= @race.racetype %></li>
+					<li><b>Vehicle category:</b> <%= @race.vehicletype %></li>
+					<li><b>Driver entry fee:</b> €<%= @race.driverentryfee %></li>
+					<li><b>Spectator fee:</b> €<%= @race.spectatorfee %></li>
 				</ul>
 				</li>
 			</ul>
-	</div>
-
+</div>
+<p>
+  <b>Race Name:</b>
+  <%= @race.racename %>
 </p>
 
 <p>
+	<%if @race.circutmap != nil?%>
 	  <b>Circuit Map:</b>
-	  <%= image_tag(@race.circutmap, :size =>'100x100')%>
-</p>
-
-<p>
-  <b>Trailer:</b>
-  <%= sanitize @race.trailer, :tags =>['iframe']%>
-</p>
-
-<p>
-  <b>Date of the Race:</b>
-  <%= @race.dor %>
-</p>
-
-<p>
-  <b>Last sign up day:</b>
-  <%= @race.lastsignupday %>
-</p>
-
-<p>
-  <b>Vehicletype:</b>
-  <%= @race.vehicletype %>
-</p>
-
-<p>
-  <b>Racetype:</b>
-  <%= @race.racetype %>
-</p>
-
-<p>
-  <b>Sponsor:</b>
-  <%= @race.sponsor %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@race.latitude}%2C#{@race.longitude}" %>
-</p>
-
-<p>
-  <b>Full Address:</b>
-  <%= @race.fulladdress %>
-</p>
-
-<p>
-  <b>Telephone:</b>
-  <%= @race.telephone %>
-</p>
-
-<p>
-  <b>Website:</b>
-	<%= link_to @race.website do%>
-		<%= @race.website %>
+	  <%= image_tag(@race.circutmap, :size =>'300x150')%>
 	<%end%>
 </p>
 
-<p>
-  <b>Driverentryfee:</b>
-  <%= @race.driverentryfee %>
-</p>
-
-<p>
-  <b>Spectatorfee:</b>
-  <%= @race.spectatorfee %>
-</p>
-
+<table>
+	<tr>
+		<td>	
+			  <%= sanitize @race.trailer, :tags =>['iframe']%>
+		</td>
+		<td>
+			  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@race.latitude}%2C#{@race.longitude}" %>
+		</td>
+	</tr>
+</table>
 <%= link_to 'Edit', edit_race_path(@race) %> |
 <%= link_to 'Back', races_path %>

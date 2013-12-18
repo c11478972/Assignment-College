@@ -1,6 +1,4 @@
 class Race < ActiveRecord::Base
-	require 'date'
-	belongs_to :service_station
 	belongs_to :location
 	validates :racename, :dor, :vehicletype, :racetype, :location, :driverentryfee, :spectatorfee, presence: true
 	validates :racename, uniqueness: true
@@ -25,5 +23,9 @@ class Race < ActiveRecord::Base
 	
 	def lastsignupday
 		lastsignupday  = dor - 7
+	end
+	
+	def numofdaystoreg
+		numofdaystoreg = (lastsignupday - Date.current).to_i
 	end
 end

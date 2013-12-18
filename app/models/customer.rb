@@ -22,10 +22,18 @@ class Customer < ActiveRecord::Base
 		save!
 		CustomerMailer.password_reset(self).deliver
 	end
+	
 	def generate_token(column)
 		begin
 			self[column] = SecureRandom.urlsafe_base64
 		end while Customer.exists?(column => self[column])
+	end
+	
+	def fullname
+		fullname = self.first_name + " " + self.last_name
+	end
+	def fulladdress
+		fulladdress = self.address + " " + self.location.postal_code #How to get the location name
 	end
 	#def self.setEditor(customer) #class method Note that the self is the same as the  
 	#	unless customer.nil?

@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
-
+<div id="sidebar">
+			<ul>
+				<li>
+				<h2>Garages Nearby</h2>
+				<ul>
+					<%@service_stations.each do |ss|%>
+						<li><%=link_to ss.fulladdress, ss%>(<%= ss.distance.round(5)%> km)</li>
+					<%end%>
+				</ul>
+				</li>
+			</ul>
+</div>
 <p>
-  <b>First name:</b>
-  <%= @customer.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @customer.last_name %>
+  <b>Name:</b>
+  <%= @customer.fullname %>
 </p>
 
 <p>
@@ -16,23 +22,13 @@
 </p>
 
 <p>
-  <b>Address:</b>
  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@customer.latitude}%2C#{@customer.longitude}" %>
 </p>
 
 <p>
-  <b>Location:</b>
-  <%= @customer.location.postal_code %>
+  <b>Full Address:</b>
+  <%= @customer.fulladdress %>
 </p>
-
-<%@service_stations.each do |ss|%>
-	<p>
-		<b>Garages nearby:</b></br>
-		<ul>
-		<li><%=link_to ss.fulladdress, ss%>(<%= ss.distance.round(5)%> km)</li>
-		</ul>
-	</p>
-<%end%>
 
 <p>
 	<% if !@customer.vehicles.empty? %>
