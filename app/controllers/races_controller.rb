@@ -1,7 +1,7 @@
 class RacesController < ApplicationController
   # GET /races
   # GET /races.json
-  skip_filter :authorise, :only => [:index, :show]
+  skip_filter :authorise, :only => [:index, :show, :search]
   
   def index
     @races = Race.all

@@ -49,5 +49,26 @@
 		</td>
 	</tr>
 </table>
+<% if !@race.raceentries.empty? %>
+		<b>The results are:</b><br \>
+		<table>
+			<th>Name</th>
+			<th>Vehicle </th>
+			<th>Position</th>
+			<th>Time</th>
+		</tr>
+			<% @race.raceentries.each do |re| %>
+				<tr>
+					<td><%= re.customer.fullname 	%></td>
+					<td><%= re.vehicle.registration_num %></td>
+					<td><%= re.position %></td>
+					<td><%= re.dor.strftime('%H:%M:%S') %></td>
+				</tr>
+			<%end%>
+		</table>
+<%else %>
+		<b>There are currently no results</b><br />
+<% end %>
+<%= link_to 'Add new result', new_raceentry_path %>	
 <%= link_to 'Edit', edit_race_path(@race) %> |
 <%= link_to 'Back', races_path %>

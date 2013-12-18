@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @raceentry.customer.fullname %>
+</p>
+
+<p>
+  <b>Compname:</b>
+  <%= @raceentry.race.racename %>
+</p>
+
+<p>
+  <b>Vehname:</b>
+  <%= @raceentry.vehicle.registration_num %>
+</p>
+
+<p>
+  <b>Dor:</b>
+  <%= @raceentry.dor.strftime('%H:%M:%S') %>
+</p>
+
+<p>
+  <b>Postion:</b>
+  <%= @raceentry.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_raceentry_path(@raceentry) %> |
+<%= link_to 'Details', @raceentry.race %>

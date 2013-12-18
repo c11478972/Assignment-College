@@ -1,0 +1,31 @@
+<h1>Listing raceentries</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Compname</th>
+    <th>Vehname</th>
+    <th>Dor</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @raceentries.each do |raceentry| %>
+  <tr>
+    <td><%= raceentry.customer.fullname %></td>
+    <td><%= raceentry.race.racename %></td>
+    <td><%= raceentry.vehicle.registration_num %></td>
+    <td><%= raceentry.dor %></td>
+    <td><%= raceentry.position %></td>
+    <td><%= link_to 'Show', raceentry %></td>
+    <td><%= link_to 'Edit', edit_raceentry_path(raceentry) %></td>
+    <td><%= link_to 'Destroy', raceentry, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Raceentry', new_raceentry_path %>

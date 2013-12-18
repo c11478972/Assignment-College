@@ -1,5 +1,7 @@
 Assignment1::Application.routes.draw do
 
+  resources :raceentries
+
   resources :journals do
 		resources :posts
   end

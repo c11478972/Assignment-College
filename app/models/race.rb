@@ -1,5 +1,6 @@
 class Race < ActiveRecord::Base
 	belongs_to :location
+	has_many :raceentries
 	validates :racename, :dor, :vehicletype, :racetype, :location, :driverentryfee, :spectatorfee, presence: true
 	validates :racename, uniqueness: true
 	geocoded_by :fulladdress

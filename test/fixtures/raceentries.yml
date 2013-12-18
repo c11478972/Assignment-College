@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  compname: MyString
+  vehname: MyString
+  dor: 2013-12-18
+  postion: MyString
+
+two:
+  name: MyString
+  compname: MyString
+  vehname: MyString
+  dor: 2013-12-18
+  postion: MyString

@@ -14,7 +14,7 @@
 		end
 	end
 	#locations = Location.create([{postal_code: 'Dublin'},{postal_code: 'Cork'},{postal_code: 'London Derry'},{postal_code: 'Armagh'},{postal_code: 'Wexford'}])
-	#Customer.create(first_name: 'Stephen', last_name:'OKennedy', email: 'stephenoken@gmail.com', 
-	#address: '3 Clonasleigh', location_id: 'Dublin', password_digest: 'password')
+	#Customer.create(first_name: 'Stephen', last_name:'OKennedy', email: 'c11478972@mydit.ie', 
+	#address: '3 Clonasleigh', location_id: 'Dublin', password_digest: 'password', auth_token:'1234567sw')
 	
 	

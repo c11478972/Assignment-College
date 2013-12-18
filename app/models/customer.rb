@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
 	belongs_to :location
 	has_many :vehicles
+	has_many :raceentries
 	has_many :journals
 	has_many :posts, :dependent => :destroy
 	validates :first_name, presence: true
@@ -32,6 +33,7 @@ class Customer < ActiveRecord::Base
 	def fullname
 		fullname = self.first_name + " " + self.last_name
 	end
+	
 	def fulladdress
 		fulladdress = self.address + " " + self.location.postal_code #How to get the location name
 	end
